@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="ftco-blocks-cover-1">
+    <div class="ftco-cover-1 overlay innerpage">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h1>Our For Rent Cars</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            {% if carlist %}
+            {% for car in carlist %}
+            <div class="col-lg-4 col-md-6 mb-4 cards">
+                <div class="item-1">
+                    <a href="#"><img src="{{ car.photo_main.url }}" alt="cars_list" class="img-fluid  car_img"></a>
+                    <div class="item-1-contents">
+                        <div class="text-center">
+                            <h3><a href="#">{{car.vendor}} | {{car.model}}</a></h3>
+                            <div class="rating">
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                            </div>
+                            <div class="rent-price"><span>{{car.price}} <i class="fas fa-dollar-sign dollar"></i>/</span>day</div>
+                        </div>
+                        <ul class="specs">
+                            <li>
+                                <span>Doors</span>
+                                <span class="spec">{{car.doors}}</span>
+                            </li>
+                            <li>
+                                <span>Seats</span>
+                                <span class="spec">{{car.seatss}}</span>
+                            </li>
+                            <li>
+                                <span>Transmission</span>
+                                <span class="spec">{{car.transmition}}</span>
+                            </li>
+                            <li>
+                                <span>Minium age</span>
+                                <span class="spec">{{car.minimum_age}} years</span>
+                            </li>
+                        </ul>
+                        <div class="d-flex action">
+                            <a href="{% url 'cars:single_car' car.id %}" class="btn btn-primary">View this car</a>
+                        </div>
+                    </div>
+                </div>
+                <div class ="item-2">Manager is: <b>{{ car.carmanager }}</b>
+                {% for man in manager %}{% if man == car.carmanager %}
+                <img src = "{{ man.photo.url }}"/>{% endif %}{% endfor %}</div>
+                
+            </div>
+            {% endfor %}
+            
+            {% else %}
+            <div>NO CARLS FOR RENT</div>
+            {% endif %}
+            
+<div class="col-md-12">
+                {% if carlist.has_other_pages %}
+                <nav aria-label="Pagination">
+                    <ul class="pagination">
+                        {% if carlist.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ carlist.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        {% endif %}
+                        {% for i in carlist.paginator.page_range %}
+                        {% if carlist.number == i %}
+                        <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if carlist.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ carlist.next_page_number }}">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+
+<div class="container site-section mb-5">
+    {% endblock %}
