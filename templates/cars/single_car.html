@@ -118,7 +118,8 @@
                                 </li>
                             </ul>
                             <div class="d-flex action act_button">
-                                <a href="#" class="btn btn-primary">Rent Now</a>
+                                <a href={% url "cars:cars_list" %} class="btn back btn-outline-primary"><i class="fas fa-arrow-left"></i> Go Back</a>
+                                <a href={% url "contactus" %} class="btn btn-outline-success">Rent Now <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                         </div>
@@ -172,7 +173,6 @@
                                 <li><i class="fab fa-telegram-plane"> Telegram: {{manager.social}}</i></li>
                                 </ul>
                         </div>
-                
                 </div>
                 </div>
             </div>

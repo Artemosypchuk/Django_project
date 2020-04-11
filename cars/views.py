@@ -23,7 +23,7 @@ def cars(request):
 
 def singlecar(request, cars_list_id):
     car = get_object_or_404(CarsList, pk=cars_list_id)
-    manager = get_object_or_404(CarManager,name=car.carmanager)
+    manager = get_object_or_404(CarManager, name=car.carmanager)
     context = {
         'car': car,
         'manager': manager

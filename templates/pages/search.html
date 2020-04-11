@@ -1,24 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay innerpage">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h1>Our For Rent Cars</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
+{% include "parts/_header_internal.html" %}
+<div class='container'>
+<form class="trip-form fixed-top" action="{% url 'search' %}">
+          <div class="row align-items-center mb-4">
+            <div class="col-md-6">
+              <h3 class="m-0">Begin your trip here</h3>
             </div>
+            <div class="col-md-6 text-md-right">
+              <span class="text-primary">{{carlist_search.count}}</span> <span>cars found</span></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="cf-1">Vendor</label>
+              <select class="form-control" name="vendor" id="exampleFormControlSelect1">
+              <option selected disabled hidden>select</option>
+                {% for car in vendor_search %}
+                <option value="{{ car.vendor }}">{{ car.vendor }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-2">Model</label>
+              <select class="form-control" name="model" id="exampleFormControlSelect1">
+              <option selected disabled hidden>select</option>
+                {% for car in model_search %}
+                <option value="{{ car.model }}">{{ car.model }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-3">Engine</label>
+              <select class="form-control" name="engine" id="exampleFormControlSelect1">
+              <option selected disabled hidden>select</option>
+                {% for car in engine_search %}
+                <option value="{{ car.engine }}">{{ car.engine }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-4">Transmission</label>
+              <select class="form-control" name="transmission" id="exampleFormControlSelect1">
+              <option selected disabled hidden>select</option>
+                {% for car in transmission_search %}
+                <option value="{{ car.transmission }}">{{ car.transmission }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
         </div>
-    </div>
-</div>
-
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
-            {% if carlist %}
-            {% for car in carlist %}
+            {% if carlist_search %}
+            
+            {% for car in carlist_search %}
+            
             <div class="col-lg-4 col-md-6 mb-4 cards">
                 <div class="item-1">
                     <a href="{% url 'cars:single_car' car.id %}"><img src="{{ car.photo_main.url }}" alt="cars_list" class="img-fluid  car_img"></a>
@@ -57,15 +106,13 @@
                         </div>
                     </div>
                 </div>
-                <div class ="item-2">Manager is: <b>{{ car.carmanager }}</b>
-                {% for man in manager %}{% if man == car.carmanager %}
-                <img src = "{{ man.photo.url }}"/>{% endif %}{% endfor %}</div>
+                
                 
             </div>
             {% endfor %}
             
             {% else %}
-            <div>NO CARLS FOR RENT</div>
+            <div><span class="text-primary">{{carlist_search.count}}</span> CARS FOUND!</div>
             {% endif %}
             
         <div class="col-md-12">

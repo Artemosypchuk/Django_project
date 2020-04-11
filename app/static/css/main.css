@@ -2319,6 +2319,10 @@ h5,
     justify-content: center;
 }
 
+.back {
+    margin-right: 5px;
+}
+
 .text-center {
     top: 50px;
 }
@@ -2333,4 +2337,24 @@ h5,
 
 .about {
     height: 100px;
+}
+
+.small_car {
+    width: 64px;
+    min-width: 120px;
+    height: 64px;
+    min-height: 80px;
+    position: relative;
+    left: 267px;
+    top: 0;
+}
+
+.my-4 {
+    position: absolute;
+    top: 50px;
+}
+
+.foarm {
+    position: relative;
+    top: 45px;
 }

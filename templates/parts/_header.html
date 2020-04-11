@@ -6,6 +6,7 @@
                     <div class="feature-car-rent-box-1">
                     {% if rnd_car %}
                         <h3>{{rnd_car.vendor}} {{rnd_car.model}}</h3>
+                        <img src="{{ rnd_car.photo_main.url }}" alt="cars_list" class="img-fluid small_car">
                         <ul class="list-unstyled">
                             <li>
                                 <span>Doors</span>
@@ -21,7 +22,7 @@
                             </li>
                             <li>
                                 <span>Transmission</span>
-                                <span class="spec">{{rnd_car.tranasmossion}}</span>
+                                <span class="spec">{{rnd_car.transmission}}</span>
                             </li>
                             <li>
                                 <span>Minium age</span>

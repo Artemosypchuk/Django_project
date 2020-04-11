@@ -7,44 +7,64 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-
-                <form class="trip-form">
-                    <div class="row align-items-center mb-4">
-                        <div class="col-md-6">
-                            <h3 class="m-0">Begin your trip here</h3>
-                        </div>
-                        <div class="col-md-6 text-md-right">{% if carlist %}
-                            <span class="text-primary">{{carlist.count}}</span> <span>cars available</span></span>
-                            {% else %}
-                            <span class="text-primary">0</span> <span>cars available</span></span>
-                        {% endif %}</div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="cf-1">Where you from</label>
-                            <input type="text" id="cf-1" placeholder="Your pickup address" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-2">Where you go</label>
-                            <input type="text" id="cf-2" placeholder="Your drop-off address" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-3">Journey date</label>
-                            <input type="text" id="cf-3" placeholder="Your pickup address"
-                                class="form-control datepicker px-3">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-4">Return date</label>
-                            <input type="text" id="cf-4" placeholder="Your pickup address"
-                                class="form-control datepicker px-3">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <input type="submit" value="Submit" class="btn btn-primary">
-                        </div>
-                    </div>
-                </form>
+                
+                <form class="trip-form" action="{% url 'search' %}">
+          <div class="row align-items-center mb-4">
+            <div class="col-md-6">
+              <h3 class="m-0">Begin your trip here</h3>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <span class="text-primary">{{carlist.count}}</span> <span>cars available</span></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="cf-1">Vendor</label>
+              <select class="form-control" name="vendor" id="exampleFormControlSelect1">
+              <option></option>
+                {% for car in vendor_search %}
+                <option value="{{ car.vendor }}">{{ car.vendor }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-2">Model</label>
+              <select class="form-control" name="model" id="exampleFormControlSelect1">
+              <option></option>
+                {% for car in model_search %}
+                <option value="{{ car.model }}">{{ car.model }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-3">Engine</label>
+              <select class="form-control" name="engine" id="exampleFormControlSelect1">
+              <option></option>
+                {% for car in engine_search %}
+                <option value="{{ car.engine }}">{{ car.engine }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cf-4">Transmission</label>
+              <select class="form-control" name="transmission" id="exampleFormControlSelect1">
+              <option></option>
+                {% for car in transmission_search %}
+                <option value="{{ car.transmission }}">{{ car.transmission }}</option>
+                {% endfor  %}
+ 
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
             </div>
         </div>
     </div>
@@ -98,7 +118,7 @@
                                 </li>
                                 <li>
                                     <span>Transmission</span>
-                                    <span class="spec">Automatic</span>
+                                    <span class="spec">{{car.transmission}}</span>
                                 </li>
                                 <li>
                                     <span>Minium age</span>
