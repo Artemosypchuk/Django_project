@@ -383,7 +383,7 @@ h5,
 
 @media (min-width: 768px) {
     .site-section {
-        padding: 5em 0;
+        padding: 3em 0;
     }
 }
 
@@ -1167,7 +1167,7 @@ h5,
 }
 
 .site-section {
-    padding: 7rem 0;
+    padding: 3rem 0;
 }
 
 @media (max-width: 991.98px) {
@@ -2354,7 +2354,219 @@ h5,
     top: 50px;
 }
 
-.foarm {
+.reg {
     position: relative;
     top: 45px;
+    padding: 100px 0px !important;
+}
+
+#login {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    top: -2px;
+}
+
+.pos-f-t {
+    position: relative;
+    top: 100px;
+}
+
+.right_side_bar {
+    position: relative;
+    height: 100vh;
+}
+
+.right_side_bar h1 {
+    color: white;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.dash {
+    /* background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=747b80ff&noise=e0fff6&density=55&opacity=60); */
+    background-image: url("../images/road_dash.jpg");
+    background-repeat: round;
+    background-size: cover;
+    position: relative;
+    top: 100px;
+    width: 100%;
+}
+
+.header__burger {
+    display: block;
+    position: fixed;
+    top: 43px;
+    width: 30px;
+    height: 20px;
+    z-index: 10000;
+}
+
+.header__burger::before,
+.header__burger::after {
+    content: "";
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    transition: all 500ms;
+}
+
+.header__burger::before {
+    top: 0;
+}
+
+.header__burger::after {
+    bottom: 0;
+}
+
+.header__burger .spin {
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+    transition: all 500ms;
+}
+
+.header__burger.active::before {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.header__burger.active::after {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+
+.header__burger.active .spin {
+    transform: scale(0);
+}
+
+.header__menu {
+    position: absolute;
+    top: 40px;
+    transition: all 300ms;
+    width: 800px;
+    right: 14px;
+    height: 0px;
+    background: rgba(119, 136, 153, 0.424);
+}
+
+.header__menu.active {
+    content: "";
+    top: 40px;
+    right: 14px;
+    transition: all 300ms;
+    top: 100%;
+    width: 360px;
+}
+
+.header__menu.active .header__menu__ul {
+    display: block;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    list-style: none;
+    padding-left: 5px;
+}
+
+.header__menu__ul {
+    position: relative;
+    top: 50px;
+    display: none;
+    margin: 0 auto;
+    color: white;
+    margin-top: 150px;
+}
+
+.header__menu__ul li {
+    content: "";
+    width: 100%;
+    border-bottom: solid 2px white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    transition: all 500ms;
+    left: 0px;
+    padding: 10px;
+}
+
+.header__menu__ul li:hover {
+    transform: scale(1.2);
+    left: 30px;
+}
+
+.UserName {
+    text-transform: uppercase;
+    color: lightgreen;
+}
+
+.msg {
+    position: relative;
+    transition: all 500ms;
+}
+
+.closed {
+    opacity: 0;
+}
+
+.rent_form {
+    margin: 0 auto;
+    position: absolute;
+    left: -365px;
+}
+
+.card_m {
+    position: relative;
+    right: -365px;
+}
+
+.card_c {
+    position: relative;
+    left: 50%;
+}
+
+.btn_rent {
+    position: absolute;
+    bottom: 44px;
+    right: 600px;
+    z-index: 3;
+}
+
+.smaller {
+    font-size: 65%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.single_car {
+    position: absolute;
+    right: -251px;
+    width: 250px;
+    height: 150px;
+    display: none;
+}
+
+.header__menu__ul li:hover .single_car {
+    display: block;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+.dash_ul {
+    display: flex;
+    flex-flow: column wrap;
+    position: relative;
+    width: 100%;
+    align-items: flex-start;
+    list-style-type: none;
+    color: white;
 }

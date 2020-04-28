@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 {% load static %}
 {% include "parts/_header.html" %}
 <div class="site-section pt-0 pb-0 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                
                 <form class="trip-form" action="{% url 'search' %}">
           <div class="row align-items-center mb-4">
             <div class="col-md-6">
