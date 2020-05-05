@@ -1,3 +1,4 @@
+#!groovy
 properties([disableConcurrentBuilds()])
 
 pipeline  {
@@ -66,6 +67,6 @@ pipeline  {
         //         ansible-playbook toolbox/ansible/playbooks/demloyToStageServer.yml
         //         '''
         //     }
-        //}
+        }
 
     }
