@@ -1,6 +1,7 @@
 #!groovy
 properties([disableConcurrentBuilds()])
 
+
 pipeline  {
     agent { 
         label 'master'
@@ -14,7 +15,7 @@ pipeline  {
             steps {
                 echo 'Creating docker image ...'
                 dir('.'){
-                    // sh "docker build -t macnaer/chatterboxserver . "
+                    sh "docker build -t tyoska/car_rent . "
                 }
             }
         }
