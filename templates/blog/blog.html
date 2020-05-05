@@ -17,106 +17,54 @@
 
 <div class="site-section bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
+        <div class="row">{% for post in blog_list %}
+        
+        {% for pk in posted_car %}{% if pk.id == post.car_id %}
+            <div class="col-lg-4 col-md-6 mb-4 cards">
                 <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/post_1.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
+                    <a href="{% url 'cars:single_car' pk.id %}">
+                        <img src="{{ pk.photo_main.url }}" alt="Image" class="img-fluid blog_img">
+                    </a> 
                     <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
+                        <h2><a href="{% url 'cars:single_car' pk.id %}">{{pk.vendor}} {{pk.model}}</a></h2>
+                        <span class="meta d-inline-block mb-3"><small>{{post.pub_date}}</small><span class="mx-2">by</span> <a
+                                href="#">{{post.author_id}}</a></span>
+                        <p>{{post.text_area}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/img_2.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/img_3.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/post_2.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/img_2.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="post-entry-1 h-100">
-                    <a href="single.html">
-                        <img src="{% static 'images/img_3.jpg' %}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-entry-1-contents">
-
-                        <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                        <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a
-                                href="#">Admin</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum
-                            molestias consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
             <div class="col-12">
-                <span class="p-3">1</span>
-                <a href="#" class="p-3">2</a>
-                <a href="#" class="p-3">3</a>
-                <a href="#" class="p-3">4</a>
+                <span class="p-3"></span>
+                <div class="col-md-12">
+                {% if blog_list.has_other_pages %}
+                <nav aria-label="Pagination">
+                    <ul class="pagination">
+                        {% if blog_list.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ blog_list.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        {% endif %}
+                        {% for i in blog_list.paginator.page_range %}
+                        {% if blog_list.number == i %}
+                        <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if blog_list.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ blog_list.next_page_number }}">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
             </div>
         </div>
     </div>
@@ -130,29 +78,5 @@
                 earum voluptates sed!</p>
         </div>
     </div>
-    <div class="how-it-works d-flex">
-        <div class="step">
-            <span class="number"><span>01</span></span>
-            <span class="caption">Time &amp; Place</span>
-        </div>
-        <div class="step">
-            <span class="number"><span>02</span></span>
-            <span class="caption">Car</span>
-        </div>
-        <div class="step">
-            <span class="number"><span>03</span></span>
-            <span class="caption">Details</span>
-        </div>
-        <div class="step">
-            <span class="number"><span>04</span></span>
-            <span class="caption">Checkout</span>
-        </div>
-        <div class="step">
-            <span class="number"><span>05</span></span>
-            <span class="caption">Done</span>
-        </div>
-
-    </div>
 </div>
-
 {% endblock %}

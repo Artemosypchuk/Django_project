@@ -8,62 +8,62 @@
         <div class="row">
             <div class="col-12">
                 <form class="trip-form" action="{% url 'search' %}">
-          <div class="row align-items-center mb-4">
-            <div class="col-md-6">
-              <h3 class="m-0">Begin your trip here</h3>
-            </div>
-            <div class="col-md-6 text-md-right">
-              <span class="text-primary">{{carlist.count}}</span> <span>cars available</span></span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-3">
-              <label for="cf-1">Vendor</label>
-              <select class="form-control" name="vendor" id="exampleFormControlSelect1">
-              <option></option>
-                {% for car in vendor_search %}
-                <option value="{{ car.vendor }}">{{ car.vendor }}</option>
-                {% endfor  %}
- 
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="cf-2">Model</label>
-              <select class="form-control" name="model" id="exampleFormControlSelect1">
-              <option></option>
-                {% for car in model_search %}
-                <option value="{{ car.model }}">{{ car.model }}</option>
-                {% endfor  %}
- 
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="cf-3">Engine</label>
-              <select class="form-control" name="engine" id="exampleFormControlSelect1">
-              <option></option>
-                {% for car in engine_search %}
-                <option value="{{ car.engine }}">{{ car.engine }}</option>
-                {% endfor  %}
- 
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="cf-4">Transmission</label>
-              <select class="form-control" name="transmission" id="exampleFormControlSelect1">
-              <option></option>
-                {% for car in transmission_search %}
-                <option value="{{ car.transmission }}">{{ car.transmission }}</option>
-                {% endfor  %}
- 
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <input type="submit" value="Search" class="btn btn-primary">
-            </div>
-          </div>
-        </form>
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <h3 class="m-0">Begin your trip here</h3>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <span class="text-primary">{{carlist.count}}</span> <span>cars available</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="cf-1">Vendor</label>
+                            <select class="form-control" name="vendor" id="exampleFormControlSelect1">
+                                <option></option>
+                                {% for car in vendor_search %}
+                                <option value="{{ car.vendor }}">{{ car.vendor }}</option>
+                                {% endfor  %}
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-2">Model</label>
+                            <select class="form-control" name="model" id="exampleFormControlSelect1">
+                                <option></option>
+                                {% for car in model_search %}
+                                <option value="{{ car.model }}">{{ car.model }}</option>
+                                {% endfor  %}
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-3">Engine</label>
+                            <select class="form-control" name="engine" id="exampleFormControlSelect1">
+                                <option></option>
+                                {% for car in engine_search %}
+                                <option value="{{ car.engine }}">{{ car.engine }}</option>
+                                {% endfor  %}
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Transmission</label>
+                            <select class="form-control" name="transmission" id="exampleFormControlSelect1">
+                                <option></option>
+                                {% for car in transmission_search %}
+                                <option value="{{ car.transmission }}">{{ car.transmission }}</option>
+                                {% endfor  %}
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="submit" value="Search" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
 
 
                 <div class="nonloop-block-13 owl-carousel">
-                   {% if carlist %}
+                    {% if carlist %}
                     {% for car in carlist %}
                     <div class="item-1">
                         <a href="#"><img src="{{ car.photo_main.url }}" alt="Image" class="img-fluid car_img"></a>
@@ -133,7 +133,7 @@
                     {% endif %}
 
 
-                    
+
 
                 </div>
 

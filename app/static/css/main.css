@@ -2450,18 +2450,17 @@ h5,
     top: 40px;
     transition: all 300ms;
     width: 800px;
-    right: 14px;
+    left: -100%;
     height: 0px;
     background: rgba(119, 136, 153, 0.424);
 }
 
 .header__menu.active {
     content: "";
-    top: 40px;
-    right: 14px;
+    top: 80px;
     transition: all 300ms;
-    top: 100%;
     width: 360px;
+    left: 10%;
 }
 
 .header__menu.active .header__menu__ul {
@@ -2482,7 +2481,7 @@ h5,
     margin-top: 150px;
 }
 
-.header__menu__ul li {
+.header__menu__ul .dash_modal {
     content: "";
     width: 100%;
     border-bottom: solid 2px white;
@@ -2496,7 +2495,7 @@ h5,
     padding: 10px;
 }
 
-.header__menu__ul li:hover {
+.header__menu__ul .dash_modal:hover {
     transform: scale(1.2);
     left: 30px;
 }
@@ -2533,8 +2532,8 @@ h5,
 
 .btn_rent {
     position: absolute;
-    bottom: 44px;
-    right: 600px;
+    bottom: 30px;
+    right: 715px;
     z-index: 3;
 }
 
@@ -2548,6 +2547,7 @@ h5,
 .single_car {
     position: absolute;
     right: -251px;
+    top: 0px;
     width: 250px;
     height: 150px;
     display: none;
@@ -2565,8 +2565,25 @@ body.lock {
     display: flex;
     flex-flow: column wrap;
     position: relative;
+    right: -200px;
     width: 100%;
     align-items: flex-start;
     list-style-type: none;
     color: white;
+}
+
+.dash_modal {
+    z-index: 3;
+    text-decoration: none;
+    text-align: left;
+    color: white;
+}
+
+.dash_modal:hover .single_car {
+    display: block;
+}
+
+.blog_img {
+    width: 349.98px;
+    height: 242px;
 }

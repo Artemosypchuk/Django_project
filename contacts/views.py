@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Contacts
 from cars.models import CarsList
+from carmanager.models import CarManager
+from django.core.mail import send_mail, EmailMultiAlternatives
 
 
 def contact(request):
@@ -28,5 +30,24 @@ def contact(request):
         one_car = CarsList.objects.get(id=car_id)
         one_car.is_published = False
         one_car.save()
+        manager = CarManager.objects.get(name=car_manager)
+        # send_mail(
+        #     'New car order',
+        #     'Hi' + manager.name + 'You have New order'+' ' + " " + message +
+        #     " " + name + " " + car_name + " " + phone,
+        #     'artemosipchuk@gmail.com',
+        #     [manager.email],
+        #     fail_silently=False,
+
+        # )
+        subject, from_email, to = 'New car order', 'artemosipchuk@gmail.com', manager.email
+        text_content = 'This is an important message.'
+        html_content = '<p>' + 'Hi' + ' ' + '<span style="text-transform:uppercase; color:green;">' + manager.name + \
+            '</span>'+'<br><hr>' + 'You have New order message: '+' ' + " " + message + \
+            "<br><hr>"+'From: ' + name + "<br><hr>" + 'Car: ' + \
+            car_name + "<br><hr>"+'Phone: ' + phone + '</p>'
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
         messages.success(request, 'Your reqwest submited!')
         return redirect('accounts:dashboard')

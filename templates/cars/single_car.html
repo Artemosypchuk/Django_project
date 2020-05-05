@@ -16,7 +16,7 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 blog-content d-flex">
+            <div class="col-md-12 blog-content d-flex" style="height: 925px;">
             {% if user.is_authenticated %}
             <form action="{% url 'contacts:contact' %}" method="POST">
             {% csrf_token %}

@@ -1,14 +1,10 @@
-{% extends 'base.html' %} {% block content %} 
+{% extends 'base.html' %} {% block content %}
 {% load static %} {% include "parts/_header_internal.html" %}
 <div class="site-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mb-5 mb-lg-0 order-lg-2">
-        <img
-          src="{% static 'images/hero_2.jpg' %}"
-          alt="Image"
-          class="img-fluid"
-        />
+        <img src="{% static 'images/hero_2.jpg' %}" alt="Image" class="img-fluid" />
       </div>
       <div class="col-lg-4 mr-auto">
         <h2>Car Company</h2>
@@ -43,63 +39,29 @@
       {% if managers %} {% for manager in managers %}
       <div class="col-lg-4 col-md-6 mb-5">
         <div class="post-entry-1 h-100 person-1">
-          <img
-            src="{{manager.photo.url}}"
-            alt="Image"
-            class="img-fluid about"
-          />
+          <img src="{{manager.photo.url}}" alt="Image" class="img-fluid about" />
 
           <div class="post-entry-1-contents">
             {% if manager.rating == 1 %}
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
             {% elif manager.rating == 2 %}
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
             {% elif manager.rating == 3 %}
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
             {% elif manager.rating == 4 %}
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
             {% elif manager.rating == 5 %}
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
-            <span class="icon-star text-warning"
-              ><i class="fas fa-star"></i
-            ></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+            <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
             {% endif %}<br />
             <span class="meta">{{manager.email}}</span>
             <h2>{{manager.name}}</h2>
@@ -124,11 +86,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <img
-          src="{% static 'images/hero_1.jpg' %}"
-          alt="Image"
-          class="img-fluid"
-        />
+        <img src="{% static 'images/hero_1.jpg' %}" alt="Image" class="img-fluid" />
       </div>
       <div class="col-lg-4 ml-auto">
         <h2>Our History</h2>
