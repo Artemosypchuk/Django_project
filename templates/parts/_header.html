@@ -2,10 +2,10 @@
     <div class="ftco-cover-1 overlay main_header_bg">
         <div class="container">
             <div class="row align-items-center">
-                
+
                 <div class="col-lg-5">
                     <div class="feature-car-rent-box-1">
-                    {% if rnd_car %}
+                        {% if rnd_car %}
                         <h3>{{rnd_car.vendor}} {{rnd_car.model}}</h3>
                         <img src="{{ rnd_car.photo_main.url }}" alt="cars_list" class="img-fluid small_car">
                         <ul class="list-unstyled">
@@ -32,7 +32,7 @@
                         </ul>
                         <div class="d-flex align-items-center bg-light p-3">
                             <span style="color: red;">${{rnd_car.price}}/day</span>
-                            <a href="{% url 'contactus' %}" class="ml-auto btn btn-primary">Rent Now</a>
+                            <a href="{% url 'cars:cars' %}" class="ml-auto btn btn-primary">Rent Now</a>
                         </div>{% endif %}
                     </div>
                 </div>
