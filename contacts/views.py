@@ -48,6 +48,6 @@ def contact(request):
             car_name + "<br><hr>"+'Phone: ' + phone + '</p>'
         msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
         msg.attach_alternative(html_content, "text/html")
-        msg.send()
+        # msg.send()
         messages.success(request, 'Your reqwest submited!')
         return redirect('accounts:dashboard')
