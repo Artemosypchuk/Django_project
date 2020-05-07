@@ -1,5 +1,9 @@
 /* Base */
 
+* {
+    transition: all 500ms;
+}
+
 html {
     overflow-x: hidden;
 }
@@ -1657,16 +1661,55 @@ h5,
     background-repeat: no-repeat;
 }
 
+@media (max-width: 1500px) {
+    .feature-car-rent-box-1 {
+        width: 100%;
+    }
+    .text-right,
+    .main-menu {
+        display: flex;
+        flex: 1 1 100%;
+    }
+    .offset-6 {
+        margin: 0;
+        transition: all 500ms;
+        left: 70px;
+    }
+    .header__menu__ul {
+        flex: 1 1 100%;
+    }
+}
+
 @media (max-width: 991.98px) {
     .block__73694 .block__73422 {
         height: 400px;
+    }
+    .text-right {
+        display: block;
+        width: 100%;
+        position: relative;
+    }
+    .main-menu {
+        display: flex;
+        flex: 1 1 100%;
+        display: none;
     }
 }
 
 @media (max-width: 991.98px) {
     .slide-one-item .owl-nav {
-        display: none;
+        display: flex;
+        flex-flow: column;
     }
+}
+
+body {
+    overflow: hidden;
+}
+
+.feature-car-rent-box-1 {
+    min-width: 445px;
+    max-width: 445px;
 }
 
 .slide-one-item .owl-nav .owl-prev,
@@ -1839,7 +1882,8 @@ h5,
 @media (min-width: 992px) {
     .owl-all .owl-nav,
     .owl-all .owl-dots {
-        display: none;
+        display: flex;
+        flex-flow: column;
     }
     .owl-all .owl-stage {
         -webkit-transform: none !important;

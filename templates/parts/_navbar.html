@@ -28,8 +28,8 @@
 
 
 
-                        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                        <nav class="site-navigation text-right  d-lg-block" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav ">
                                 <li {% if '/' == request.path %}class="active" {% else %}{% endif %}><a
                                         href="{% url 'index' %}" class="nav-link">Home</a></li>
                                 <li {% if 'services' in request.path %} class="active" {% endif %}><a

@@ -1,87 +1,85 @@
-{% extends 'base.html' %}
-{% block title %}DashBoard{% endblock %}
-{% load static %}
-{% block content %}
-{% include "parts/_navbar.html" %}
+{% extends 'base.html' %} {% block title %}DashBoard{% endblock %} {% load static %} {% block content %} {% include "parts/_navbar.html" %}
 
 <style type="text/css">
-  .site-navbar {
-    background: lightslategray;
-    -webkit-box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
-    position: fixed;
-    height: 100px;
-  }
+    .site-navbar {
+        background: lightslategray;
+        -webkit-box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.75);
+        position: fixed;
+        height: 100px;
+    }
 </style>
 
 <div class="container-fluid dash">
-  <div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-      <div class="header__burger active">
-        <span class='spin'></span>
-        <div class="header__menu active">
-          <ul class="header__menu__ul">DASHBOARD<span class="UserName">{{ user.first_name }} {{ user.last_name }}`S
+            <div class="header__burger active">
+                <span class='spin'></span>
+                <div class="header__menu active">
+                    <ul class="header__menu__ul">DASHBOARD<span class="UserName">{{ user.first_name }} {{ user.last_name }}`S
               <span style="color:white;text-transform:lowercase">have <span
-                  class="badge badge-primary badge-pill">{{ orders.count }}</span> orders:</span></span>
-            {% for order in orders %}
-            <button type="button" class="btn btn-link dash_modal" data-toggle="modal" data-target="#exampleModal" data-car_id={{order.car_id}} data-whatever={{order.car}}>{{order.car}}
+                  class="badge badge-primary badge-pill">{{ orders.count }}</span> orders:</span>
+                        </span>
+                        {% for order in orders %}
+                        <button type="button" class="btn btn-link dash_modal" data-toggle="modal" data-target="#exampleModal" data-car_id={{order.car_id}} data-whatever={{order.car}}>{{order.car}}
             <small>{{ order.contact_date }}</small>
             <span class='single_car'>{% for car in listed_cars %}{% if car.id == order.car_id %}<img class="d-block w-100"
-                  src="{{ car.photo_main.url }}" alt="First slide">{% endif %}{% endfor %}</span></button>
-            
-            {% endfor %}
-          </ul>
+                  src="{{ car.photo_main.url }}" alt="First slide">{% endif %}{% endfor %}</span></button> {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-12 right_side_bar">
-      <h1>WELLCOME <span class="UserName"><span style='text-decoration:underline'>{{ user.first_name }} {{ user.last_name }}</span></span></h1>
-      <div class='col-6 offset-6'><ul class='dash_ul'>
-      <li class='disabled'>Registration date: <span style='text-decoration:underline'>{{ user.date_joined }}</span></li>
-      <li><span class="UserName"><span style='text-decoration:underline'>{{ user.first_name }} {{ user.last_name }}</span></span></li>
-      <li>e-mail: <span style='text-decoration:underline'>{{ user.email }}</span> </li>
-      <li>{{ user.name }}</li>
-      <li>Last login: <span style='text-decoration:underline'>{{ user.last_login }}</span></li>
-      </ul>
-      </div>
-      
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Leave coment for: </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="col-12 right_side_bar">
+            <h1>WELLCOME <span class="UserName"><span style='text-decoration:underline'>{{ user.first_name }} {{ user.last_name }}</span></span>
+            </h1>
+            <div class='col-6 offset-6'>
+                <ul class='dash_ul'>
+                    <li class='disabled'>Registration date: <span style='text-decoration:underline'>{{ user.date_joined }}</span></li>
+                    <li><span class="UserName"><span style='text-decoration:underline'>{{ user.first_name }} {{ user.last_name }}</span></span>
+                    </li>
+                    <li>e-mail: <span style='text-decoration:underline'>{{ user.email }}</span> </li>
+                    <li>{{ user.name }}</li>
+                    <li>Last login: <span style='text-decoration:underline'>{{ user.last_login }}</span></li>
+                </ul>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Leave coment for: </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <form action="{% url 'blog:blog' %}" method='POST'>
-        {% csrf_token %}
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control car_name" name='car_name' id="recipient-name">
-            <input type='hidden' name='car_id' id='car_id' />
-            <input type='hidden' name='author_id' value={{user.first_name}}&nbsp;{{user.last_name}}>
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" name="text_area" id="message-text"></textarea>
-          </div>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send message</button>
-      </div>
-        </form>
-        
-      </div>
-      
+                        </div>
+                        <div class="modal-body">
+                            <form action="{% url 'blog:blog' %}" method='POST'>
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                    <input type="text" class="form-control car_name" name='car_name' id="recipient-name">
+                                    <input type='hidden' name='car_id' id='car_id' />
+                                    <input type='hidden' name='author_id' value={{user.first_name}}&nbsp;{{user.last_name}}>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Message:</label>
+                                    <textarea class="form-control" name="text_area" id="message-text"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send message</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-    </div>
-</div>
 </div>
 
 {% endblock content %}
