@@ -82,24 +82,24 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'RentCar',
-#         'USER': "master",
-#         'PASSWORD': "1q2w3e4R1",
-#         'HOST': "localhost"
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'RentCar',
-        'USER': "postgres",
-        'PASSWORD': "1q2w3e4R11qq22ww",
-        'HOST': "52.191.114.132"
+        'USER': "master",
+        'PASSWORD': "1q2w3e4R1",
+        'HOST': "localhost"
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'RentCar',
+#         'USER': "postgres",
+#         'PASSWORD': "1q2w3e4R11qq22ww",
+#         'HOST': "52.191.114.132"
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

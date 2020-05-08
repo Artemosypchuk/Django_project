@@ -634,8 +634,8 @@ h5,
 
 @media (max-width: 991.98px) {
     .site-navbar {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }
 
@@ -657,7 +657,12 @@ h5,
 @media (max-width: 991.98px) {
     .site-navbar .site-logo {
         float: left;
-        position: relative;
+        position: absolute;
+        left: 50%;
+        min-width: max-content;
+    }
+    .site-menu>li>a {
+        padding: 0;
     }
 }
 
@@ -687,7 +692,7 @@ h5,
 .site-navbar .site-navigation .site-menu>li>a {
     margin-left: 15px;
     margin-right: 15px;
-    padding: 20px 0px;
+    padding-top: 20px;
     color: #fff !important;
     display: inline-block;
     text-decoration: none !important;
@@ -1665,7 +1670,6 @@ h5,
     .feature-car-rent-box-1 {
         width: 100%;
     }
-    .text-right,
     .main-menu {
         display: flex;
         flex: 1 1 100%;
@@ -1685,13 +1689,34 @@ h5,
         height: 400px;
     }
     .text-right {
-        display: block;
-        width: 100%;
+        display: flex;
+        width: max-content;
         position: relative;
+        flex: 1 1 100%;
+        top: -20px;
+        padding: 0;
+        justify-content: center;
+    }
+    .site-section {
+        position: relative;
+        top: 50px;
     }
     .main-menu {
         display: flex;
         flex: 1 1 100%;
+    }
+    .ftco-blocks-cover-1>.ftco-cover-1 {
+        min-height: 150px;
+        height: 150px;
+    }
+    nav>.box-nav {
+        display: flex;
+    }
+    nav>.box-nav:active .ftco-blocks-cover-1>.ftco-cover-1 {
+        min-height: 150px;
+        height: 100vh;
+    }
+    .feature-car-rent-box-1 {
         display: none;
     }
 }
@@ -2630,4 +2655,43 @@ body.lock {
 .blog_img {
     width: 349.98px;
     height: 242px;
+}
+
+.box-nav {
+    width: 100%;
+    display: none;
+    justify-content: center;
+}
+
+.box-nav>span {
+    height: 50px;
+    width: 50px;
+    border: solid 2px #007bff;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.411);
+}
+
+.right_side_bar>h1 {
+    animation: rotate 1.5s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.2);
+    }
+    20% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
