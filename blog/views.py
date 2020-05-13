@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from .models import Blog
+from .models import Blog, Whrite_Blog
+
 from cars.models import CarsList
 
 # Create your views here.
@@ -31,13 +32,11 @@ def blog(request):
 
 
 def post(request):
-    blog_list = Blog.objects.all().order_by('-pub_date')
-    posted_car = CarsList.objects.all()
-    paginator = Paginator(blog_list, 3)
+    blog_list = Whrite_Blog.objects.all().order_by('-pub_date')
+    paginator = Paginator(blog_list, 1)
     page = request.GET.get("page")
     paged_blog_list = paginator.get_page(page)
     context = {
         'blog_list': paged_blog_list,
-        'posted_car': posted_car
     }
     return render(request, 'blog/blog.html', context)

@@ -1,9 +1,5 @@
 /* Base */
 
-* {
-    transition: all 500ms;
-}
-
 html {
     overflow-x: hidden;
 }
@@ -2337,18 +2333,37 @@ body {
 .testimonial-2 {
     background: #fff;
     padding: 30px;
+    min-width: 300px;
+    min-height: 300px;
+    margin-bottom: 10px;
 }
 
-.testimonial-2 blockquote {
-    font-size: 1.3rem;
+.testimonial-2 {
+    height: 95%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.blog_img {
+    display: block;
 }
 
 .testimonial-2 .v-card img {
-    width: 50px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50px;
-    flex: 0 0 50px;
+    flex: 0 0 100%;
     border-radius: 50%;
+}
+
+.v-card {
+    display: flex;
+    flex-flow: column;
+}
+
+.home_testimonials {
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
 }
 
 .main_header_bg {
@@ -2375,6 +2390,10 @@ body {
 .car_img {
     width: 100%;
     height: 200px;
+}
+
+.car_testem {
+    width: auto;
 }
 
 .slide {
@@ -2652,12 +2671,12 @@ body.lock {
     display: block;
 }
 
-.blog_img {
-    width: 349.98px;
-    height: 242px;
+.testimonial-2 .v-card img {
+    width: 100%;
+    height: 100%;
 }
 
-.box-nav {
+box-nav {
     width: 100%;
     display: none;
     justify-content: center;
@@ -2694,4 +2713,39 @@ body.lock {
     100% {
         transform: scale(1);
     }
+}
+
+.testim {
+    height: 100%;
+}
+
+.card-img-top {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 30%;
+    transition: all 500ms;
+}
+
+.card-img-top:hover {
+    width: 30;
+    transform: scale(1.5);
+    top: 100px;
+    left: 100px;
+}
+
+.testim {
+    display: flex;
+    flex: 1 1 100%;
+    flex-flow: column;
+    justify-items: stretch;
+    height: 687px !important;
+}
+
+.testim img {
+    height: 420px;
+}
+
+.owl-item {
+    min-height: 687px !important;
 }

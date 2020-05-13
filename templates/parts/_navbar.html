@@ -36,7 +36,7 @@
                                 <li {% if 'about' in request.path %}class="active" {% else %}{% endif %}><a
                                         href="{% url 'about' %}" class="nav-link">About</a></li>
                                 <li {% if 'blog' in request.path %}class="active" {% else %}{% endif %}><a
-                                        href="{% url 'blog:post' %}" class="nav-link">Blog</a></li>
+                                        href="{% url 'blog:blog' %}" class="nav-link">Blog</a></li>
                                 <li {% if 'contactus' in request.path %}class="active" {% else %}{% endif %}><a
                                         href="{% url 'contactus' %}" class="nav-link">Contact</a></li>
                                 {% if user.is_authenticated %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from blog.models import Blog
 from cars.models import CarsList
 from carmanager.models import CarManager
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -10,6 +11,8 @@ def index(request):
     model_search = CarsList.objects.order_by('model').distinct('model')
     engine_search = CarsList.objects.order_by('engine').distinct('engine')
     transmission_search = CarsList.objects.order_by('transmission').distinct('transmission')
+    blog_list = Blog.objects.all().order_by('-pub_date')
+    posted_car = CarsList.objects.all()
     random_car = CarsList.objects.order_by('?')[0]
     context = {
         'carlist': carlist,
@@ -19,6 +22,8 @@ def index(request):
         'model_search': model_search,
         'engine_search': engine_search,
         'transmission_search': transmission_search,
+        'blog_list': blog_list,
+        'posted_car': posted_car,
     }
     return render(request, 'pages/index.html', context)
 
@@ -76,3 +81,17 @@ def search(request):
         'transmission_search': transmission_search,
     }
     return render(request, 'pages/search.html', context)
+
+
+
+def post(request):
+    blog_list = Blog.objects.all().order_by('-pub_date')
+    posted_car = CarsList.objects.all()
+    paginator = Paginator(blog_list, 3)
+    page = request.GET.get("page")
+    paged_blog_list = paginator.get_page(page)
+    context = {
+        'blog_list': paged_blog_list,
+        'posted_car': posted_car
+    }
+    return render(request, 'pages/index.html', context)

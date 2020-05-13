@@ -14,57 +14,55 @@
         </div>
     </div>
 </div>
-
 <div class="site-section bg-light">
     <div class="container">
-        <div class="row">{% for post in blog_list %}
-        
-        {% for pk in posted_car %}{% if pk.id == post.car_id %}
-            <div class="col-lg-4 col-md-6 mb-4 cards">
-                <div class="post-entry-1 h-100">
-                    <a href="{% url 'cars:single_car' pk.id %}">
-                        <img src="{{ pk.photo_main.url }}" alt="Image" class="img-fluid blog_img">
-                    </a> 
-                    <div class="post-entry-1-contents">
-                        <h2><a href="{% url 'cars:single_car' pk.id %}">{{pk.vendor}} {{pk.model}}</a></h2>
-                        <span class="meta d-inline-block mb-3"><small>{{post.pub_date}}</small><span class="mx-2">by</span> <a
-                                href="#">{{post.author_id}}</a></span>
-                        <p>{{post.text_area}}</p>
-                    </div>
+        <div class="row">
+        {% if blog_list %}
+        {% for blog in blog_list %}
+        <div class="cardi">
+                <img src="{{ blog.photo_main.url }}" class="card-img-top" alt="{{ blog.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.theme }}</h5>
+                    <h6 class="card-title">{{ blog.title }}</h6>
+                    <p class="card-text">{{ blog.text_area }}</p>
+                    <p class="card-text d-flex" style="
+    justify-content: space-between;"><small class="text-muted">Published: {{ blog.pub_date }}</small><small class="text-muted">By: {{blog.author_name}}</small></p>
                 </div>
             </div>
-            {% endif %}
-            {% endfor %}
-            {% endfor %}
+        {% endfor %}
+        {% else %}
+        <h2>Sorry there is no blogs now! Mabe later!</h2>
+        {% endif %}
             <div class="col-12">
                 <span class="p-3"></span>
                 <div class="col-md-12">
-                {% if blog_list.has_other_pages %}
-                <nav aria-label="Pagination">
-                    <ul class="pagination">
-                        {% if blog_list.has_previous %}
-                        <li class="page-item"><a class="page-link"
-                                href="?page={{ blog_list.previous_page_number }}">Previous</a></li>
-                        {% else %}
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        {% endif %}
-                        {% for i in blog_list.paginator.page_range %}
-                        {% if blog_list.number == i %}
-                        <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                        {% else %}
-                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                        {% endif %}
-                        {% endfor %}
-                        {% if blog_list.has_next %}
-                        <li class="page-item"><a class="page-link" href="?page={{ blog_list.next_page_number }}">Next</a>
-                        </li>
-                        {% else %}
-                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-                {% endif %}
-            </div>
+                    {% if blog_list.has_other_pages %}
+                    <nav aria-label="Pagination">
+                        <ul class="pagination">
+                            {% if blog_list.has_previous %}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{ blog_list.previous_page_number }}">Previous</a></li>
+                            {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                            {% endif %}
+                            {% for i in blog_list.paginator.page_range %}
+                            {% if blog_list.number == i %}
+                            <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if blog_list.has_next %}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{ blog_list.next_page_number }}">Next</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
