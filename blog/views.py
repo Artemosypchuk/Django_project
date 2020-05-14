@@ -27,9 +27,9 @@ def blog(request):
                     title=car_name, car_id=car_id)
         post.save()
         messages.success(request, 'Your Post will be moderated!')
-
         return redirect('accounts:dashboard')
 
+    
 
 def post(request):
     blog_list = Whrite_Blog.objects.all().order_by('-pub_date')
